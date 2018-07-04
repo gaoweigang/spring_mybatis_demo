@@ -11,13 +11,15 @@ select DATABASE();
 show tables;
 
 --创建Student表
-create table student(
-  name varchar(120),
-  age int(11)
-);
+CREATE TABLE student
+( id VARCHAR(32) NOT NULL PRIMARY KEY,
+  name VARCHAR(15),
+  sex VARCHAR(2),
+  age INT
+)
 
 --查询表
-SELECT * from student;
+SELECT * from t_student;
 
 --往表中插入记录
-insert into student values('gaoweigang', '22');
+insert into student values('100','gaoweigang', '男', '22');

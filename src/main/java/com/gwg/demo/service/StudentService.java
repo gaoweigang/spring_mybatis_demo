@@ -3,28 +3,23 @@ package com.gwg.demo.service;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
-import com.gwg.demo.mapper.StudentMapper;
+import com.gwg.demo.dao.StudentDao;
 import com.gwg.demo.model.Student;
 
-@RestController
+@Service
 public class StudentService {
 	
 	@Autowired(required=true)
-	private StudentMapper studentMapper;
+	private StudentDao studentDao;
 	
-	@RequestMapping(value = "/getStudentByName", method = RequestMethod.POST,
-			   consumes = "application/json", produces = "application/json")
-	public @ResponseBody Student getStudentByName(@RequestBody Student student){
-		System.out.println("studentMapper："+studentMapper);
+	
+	public Student getStudentByName(Student student){
+		System.out.println("Student："+student);
 		String name = student.getName();
 		System.out.println(name);
-		Student result =  studentMapper.queryStudentByName(name);
+		Student result =  studentDao.queryStudentByName(name);
 		return result;
 	}
 
